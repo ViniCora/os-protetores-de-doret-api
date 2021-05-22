@@ -13,7 +13,8 @@ const itensSessão01Schema = new mongoose.Schema({
   jornal: { type: Boolean, require: true },
   itens_hospital: { type: Boolean, require: true },
   ata_reuniao: { type: Boolean, require: true },
-  simbolo_vitruvianos: { type: Boolean, require: true }
+  simbolo_vitruvianos: { type: Boolean, require: true },
+  livro_homem_perfeito: { type: Boolean, require: true }
 });
 
 const itensSessão01Model = mongoose.model('ItensSessão01', itensSessão01Schema, 'ItensSessão01');
