@@ -11,7 +11,7 @@ import { rollsRouter } from './routes/rollsRouter.js';
 import { itensSessao01Router } from './routes/itensSessão01Router.js';
 import { monstrosRouter } from './routes/monstrosRouter.js';
 import { personagensRouter } from './routes/personagensRouter.js';
-
+import { tarotRouter } from './routes/tarotRouter.js';
 
 
 (async () => {
@@ -48,6 +48,7 @@ app.use(rollsRouter);
 app.use(itensSessao01Router);
 app.use(monstrosRouter);
 app.use(personagensRouter);
+app.use(tarotRouter);
 
 app.get('/', (req, res) => {
   res.send('API em execucao');
