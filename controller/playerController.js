@@ -492,7 +492,30 @@ const findAtributeByName = async (req, res) => {
     }
   };
 
+  const updateSanidadeMaxima = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await playerModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{sanidade_maxima : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
 
 export default {findAll, findAtributeByName, updateVida, updateMostrarTela, updateForca, updateValueAdicionar ,updateDestreza, updateCarisma, updateInteligente, updateConstituicao, 
   updateMira, updateOficio, updatePercepcao, updatePoder, updateSorte, updateLutar, updatePrimeirosSocorros, 
-  updateSanidade, updateVidaTotal, updateMunicaoAtual, updateMunicaoMaxima, updateArmaDado};
+  updateSanidade, updateVidaTotal, updateMunicaoAtual, updateMunicaoMaxima, updateArmaDado, updateSanidadeMaxima};
