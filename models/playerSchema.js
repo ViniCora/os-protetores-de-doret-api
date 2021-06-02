@@ -28,7 +28,9 @@ const playerSchema = new mongoose.Schema({
   munição_atual: {type: Number, requires: true},
   munição_maxima: {type: Number, requires: true},
   arma_dados: { type: String, require: true },
-  sanidade_maxima: {type: Number, requires: true}
+  sanidade_maxima: {type: Number, requires: true},
+  armas: {type: Array, requires: true},
+  inventario: {type: String, requires: true}
 });
 
 const playerModel = mongoose.model('Players', playerSchema, 'Players');

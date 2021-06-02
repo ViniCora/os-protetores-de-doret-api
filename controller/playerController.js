@@ -515,7 +515,53 @@ const findAtributeByName = async (req, res) => {
     }
   };
 
+  const updateArmas = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await playerModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{armas : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateInventario = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await playerModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{inventario : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
 
 export default {findAll, findAtributeByName, updateVida, updateMostrarTela, updateForca, updateValueAdicionar ,updateDestreza, updateCarisma, updateInteligente, updateConstituicao, 
-  updateMira, updateOficio, updatePercepcao, updatePoder, updateSorte, updateLutar, updatePrimeirosSocorros, 
-  updateSanidade, updateVidaTotal, updateMunicaoAtual, updateMunicaoMaxima, updateArmaDado, updateSanidadeMaxima};
+  updateMira, updateOficio, updatePercepcao, updatePoder, updateSorte, updateLutar, updatePrimeirosSocorros, updateInventario,
+  updateSanidade, updateVidaTotal, updateMunicaoAtual, updateMunicaoMaxima, updateArmaDado, updateSanidadeMaxima, updateArmas};

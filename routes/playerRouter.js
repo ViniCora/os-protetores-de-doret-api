@@ -38,7 +38,8 @@ app.post('/players/',(req, res) => {
               munição_atual: 0,
               munição_maxima: 0,
               arma_dados: '',
-              sanidade_maxima: req.body.poder
+              sanidade_maxima: req.body.poder,
+              inventario: ''
           }
       );  
       personagem.save();
@@ -94,5 +95,8 @@ app.put('/atributes/armaDado/:id', controller.updateArmaDado);
 
 app.put('/atributes/sanidadeMaxima/:id', controller.updateSanidadeMaxima);
 
+app.put('/atributes/armas/:id', controller.updateArmas);
+
+app.put('/atributes/inventario/:id', controller.updateInventario);
 
 export { app as playerRouter };

@@ -14,7 +14,7 @@ const findAll = async (req, res) => {
  };
 
 const findAtributeByName = async (req, res) => {
-   const nameReq = req.query.name;
+   const nameReq = req.query.nome;
      
    /*  //condicao para o filtro no findAll
     var condition = name
@@ -22,7 +22,7 @@ const findAtributeByName = async (req, res) => {
       : {}; */
   
     try {
-      const atributes = await npcModel.find({'name': nameReq});
+      const atributes = await npcModel.find({'nome': nameReq});
       res.send(atributes);
     } catch (error) {
       res
@@ -42,6 +42,8 @@ const findAtributeByName = async (req, res) => {
     const id = req.params.id;
 
     const value = req.body.value;
+
+    console.log(value);
   
     try {
       const newAtribute = await npcModel.findByIdAndUpdate(
@@ -400,6 +402,172 @@ const findAtributeByName = async (req, res) => {
     }
   };
 
+  const updateVidaTotal = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
 
-export default {findAll, findAtributeByName, updateVida, updateMostrarTela, updateForca, updateValueAdicionar ,updateDestreza, updateCarisma, updateInteligente,updateConstituicao, 
-  updateMira, updateOficio, updatePercepcao, updatePoder, updateSorte, updateLutar, updatePrimeirosSocorros, updateSanidade};
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{vida_total : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateMunicaoAtual = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{munição_atual : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateMunicaoMaxima = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{munição_maxima : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateArmaDado = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{arma_dados : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateSanidadeMaxima = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    const id = req.params.id;
+
+    const value = req.body.value;
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{sanidade_maxima : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateArmas = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    
+    const id = req.params.id;
+    
+    const value = req.body.value;
+    console.log(value);
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{armas : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+  const updateInventario = async (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: 'Dados para atualizacao vazio',
+      });
+    }
+  
+    
+    const id = req.params.id;
+    
+    const value = req.body.value;
+    console.log(value);
+  
+    try {
+      const newAtribute = await npcModel.findByIdAndUpdate(
+        { _id: id },
+        {$set :{inventario : value}},
+        { new: true }
+      );
+      res.send(newAtribute);
+    } catch (error) {
+      res.status(500).send({ message: 'Erro ao atualizar o personagem de id: ' + id });
+    }
+  };
+
+
+export default {findAll, findAtributeByName, updateVida, updateMostrarTela, updateForca, updateValueAdicionar ,updateDestreza, updateCarisma, updateInteligente, updateConstituicao, 
+  updateMira, updateOficio, updatePercepcao, updatePoder, updateSorte, updateLutar, updatePrimeirosSocorros, updateInventario,
+  updateSanidade, updateVidaTotal, updateMunicaoAtual, updateMunicaoMaxima, updateArmaDado, updateSanidadeMaxima, updateArmas};
